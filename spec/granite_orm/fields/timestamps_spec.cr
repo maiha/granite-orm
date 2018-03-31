@@ -19,8 +19,8 @@ module {{adapter.capitalize.id}}
       parent = Parent.new(name: "parent").tap(&.save)
       found_parent = Parent.find(parent.id)
 
-      original_timestamp = parent.created_at
-      read_timestamp = found_parent.created_at
+      original_timestamp = parent.created_at.not_nil!
+      read_timestamp = found_parent.created_at.not_nil!
 
       original_timestamp.kind.should eq Time::Kind::Utc
       read_timestamp.kind.should eq {{ time_kind_on_read }}
@@ -30,8 +30,8 @@ module {{adapter.capitalize.id}}
       parent = Parent.new(name: "parent").tap(&.save)
       found_parent = Parent.find(parent.id)
 
-      original_timestamp = parent.updated_at
-      read_timestamp = found_parent.updated_at
+      original_timestamp = parent.updated_at.not_nil!
+      read_timestamp = found_parent.updated_at.not_nil!
 
       original_timestamp.kind.should eq Time::Kind::Utc
       read_timestamp.kind.should eq {{ time_kind_on_read }}
@@ -41,8 +41,8 @@ module {{adapter.capitalize.id}}
       parent = Parent.new(name: "parent").tap(&.save)
       found_parent = Parent.find(parent.id)
 
-      original_timestamp = parent.created_at
-      read_timestamp = found_parent.created_at
+      original_timestamp = parent.created_at.not_nil!
+      read_timestamp = found_parent.created_at.not_nil!
 
       original_timestamp.epoch.should eq read_timestamp.epoch
     end
@@ -51,8 +51,8 @@ module {{adapter.capitalize.id}}
       parent = Parent.new(name: "parent").tap(&.save)
       found_parent = Parent.find(parent.id)
 
-      original_timestamp = parent.updated_at
-      read_timestamp = found_parent.updated_at
+      original_timestamp = parent.updated_at.not_nil!
+      read_timestamp = found_parent.updated_at.not_nil!
 
       original_timestamp.epoch.should eq read_timestamp.epoch
     end

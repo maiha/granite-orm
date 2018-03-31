@@ -14,7 +14,7 @@ module {{adapter.capitalize.id}}
       parent = Parent.new
       parent.name = ""
       parent.save
-      parent.id?.should be_nil
+      parent.id.should be_nil
     end
 
     it "updates an existing object" do
