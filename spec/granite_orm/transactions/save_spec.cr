@@ -29,7 +29,7 @@ module {{adapter.capitalize.id}}
       parents.size.should eq 1
 
       found = Parent.first
-      found.name.should eq parent.name
+      found.not_nil!.name.should eq parent.name
     end
 
     it "does not update an invalid object" do
@@ -39,7 +39,7 @@ module {{adapter.capitalize.id}}
       parent.name = ""
       parent.save
       parent = Parent.find parent.id
-      parent.name.should eq "Test Parent"
+      parent.not_nil!.name.should eq "Test Parent"
     end
 
     it "does not update when the conflicted primary key is given to the new record" do
@@ -75,8 +75,8 @@ module {{adapter.capitalize.id}}
         school.save
 
         found_school = School.find primary_key
-        found_school.custom_id.should eq primary_key
-        found_school.name.should eq new_name
+        found_school.not_nil!.custom_id.should eq primary_key
+        found_school.not_nil!.name.should eq new_name
       end
 
       it "updates states of new_record and persisted" do
@@ -113,7 +113,7 @@ module {{adapter.capitalize.id}}
         county.save
 
         found_county = Nation::County.find primary_key
-        found_county.name.should eq new_name
+        found_county.not_nil!.name.should eq new_name
       end
     end
 

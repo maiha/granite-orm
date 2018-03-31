@@ -43,7 +43,7 @@ module {{adapter.capitalize.id}}
       Kvs.count.should eq(1)
 
       ## Read
-      port = Kvs.find("mysql_port")
+      port = Kvs.find("mysql_port").not_nil!
       port.v.should eq("3306")
       port.new_record?.should be_false
 
